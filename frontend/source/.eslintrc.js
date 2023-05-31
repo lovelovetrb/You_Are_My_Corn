@@ -4,7 +4,6 @@ module.exports = {
         es2021: true,
         node: true,
     },
-    extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
     parser: "@typescript-eslint/parser",
     parserOptions: {
         ecmaFeatures: {
@@ -13,8 +12,9 @@ module.exports = {
         ecmaVersion: 13,
         sourceType: "module",
     },
-//    plugins: ["react", "@typescript-eslint", "prefer-arrow"],
-    plugins: ["react", "@typescript-eslint"],
+    //    plugins: ["react", "@typescript-eslint", "prefer-arrow"],
+    plugins: ["@typescript-eslint"],
+    extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
     rules: {
         "react/react-in-jsx-scope": "off",
         indent: ["error", 4, { SwitchCase: 1 }],
@@ -28,14 +28,13 @@ module.exports = {
                 html: false,
             },
         ],
-//        "prefer-arrow/prefer-arrow-functions": [
-//            "error",
-//            {
-//                disallowPrototype: true,
-//                singleReturnOnly: false,
-//                classPropertiesAllowed: false,
-//            },
-//        ],
-//        "prefer-const": ["error", { destructuring: "any", ignoreReadBeforeAssign: false }],
+        //        "prefer-arrow/prefer-arrow-functions": [
+        //            "error",
+        //            {
+        //                disallowPrototype: true,
+        //                singleReturnOnly: false,
+        //                classPropertiesAllowed: false,
+        //            },
+        //        ],
     },
 };

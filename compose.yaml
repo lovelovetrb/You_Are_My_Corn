@@ -1,7 +1,6 @@
 version: "3.9"
 
 services:
-
   frontend:
     container_name: "you_are_my_corn_frontend"
     build:
@@ -23,7 +22,7 @@ services:
     volumes:
       - ./backend/app:/usr/src/backend/app
     ports:
-      - 5000:5000
+      - 5001:5001
 
 volumes:
-    node_modules:
+  node_modules:

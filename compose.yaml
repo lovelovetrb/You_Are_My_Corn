@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   frontend:
-    container_name: "frontend"
+    container_name: "you are my corn frontend"
     build:
       context: .
       dockerfile: ./frontend/Dockerfile
@@ -16,7 +16,7 @@ services:
       - "3000:3000"
 
   backend:
-    container_name: "backend"
+    container_name: "you are my corn backend"
     build:
       context: .
       dockerfile: ./backend/Dockerfile

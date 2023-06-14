@@ -1,0 +1,32 @@
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.headerTextArea {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cornLogo {
+    margin: 0 5rem;
+}
+
+.title {
+    font-size: 5rem;
+    display: inline-block;
+    background: linear-gradient(90deg, #ffd1fa, #ffecbd);
+    background: -webkit-linear-gradient(90deg, #ffecbd, #ffd1fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(3px 3px 5px #ff527b);
+    -webkit-text-stroke: 4px #ff527b;
+}
+
+.subTitle {
+    font-size: 2rem;
+    color: #ff527b;
+}

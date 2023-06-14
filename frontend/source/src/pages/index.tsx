@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Header from "@/components/header/Header";
+import Button from "@/components/button/Button";
+import ButtonArea from "@/components/buttonArea/ButtonArea";
 
 export default function Home() {
     return (
@@ -14,7 +13,12 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.main}></main>
+            <main className={styles.main}>
+                <Header />
+                <ButtonArea>
+                    <Button text="GAME START" />
+                </ButtonArea>
+            </main>
         </>
     );
 }

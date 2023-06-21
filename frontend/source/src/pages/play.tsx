@@ -1,12 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "@/styles/Home.module.css";
+
 import Header from "@/components/header/Header";
 import Button from "@/components/button/Button";
 import ButtonArea from "@/components/buttonArea/ButtonArea";
-import Rank from "@/components/rank/Rank";
 
-export default function Home() {
+export default function Play() {
+    const onClick = () => {
+        function fetchback() {
+            const data = fetch("http://localhost:5001");
+            console.log(data);
+        }
+        fetchback();
+    };
     return (
         <>
             <Head>
@@ -15,15 +21,14 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.main}>
-                <Header />
-                <ButtonArea>
-                    <Link href="/play">
-                        <Button text="GAME START" />
-                    </Link>
-                </ButtonArea>
-                <Rank />
-            </main>
+            <Header />
+            <button
+                onClick={() => {
+                    onClick();
+                }}
+            >
+                click
+            </button>
         </>
     );
 }

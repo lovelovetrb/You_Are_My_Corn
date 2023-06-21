@@ -5,6 +5,8 @@ type Data = {
     name: string;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-    res.status(200).json({ name: "John Doe" });
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+    const data = await fetch("http://backend:5001");
+    const json = await data.json();
+    res.status(200).json( json );
 }

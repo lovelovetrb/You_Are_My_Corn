@@ -1,0 +1,44 @@
+.wrapper {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.genreArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.genreButton {
+    font-size: 1.3rem;
+    border: 1px solid #7b664b;
+    border-radius: 5px 5px 0 0;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    background-color: #fed0db;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #7b664b;
+}
+
+.tableHead th {
+    font-size: 1.3rem;
+    padding: 15px 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #7b664b;
+    letter-spacing: 2px;
+}
+
+.tableBody td {
+    font-size: 1.3rem;
+    padding: 15px 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #7b664b;
+}

@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+  font-family: 'Cherry Bomb One', cursive;
 }
 
 .headerTextArea {

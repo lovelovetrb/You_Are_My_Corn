@@ -4,7 +4,7 @@ export type Conditions = {
     category: string;
     requiredWords: string[];
     forbiddenWords: string[];
-    startDateTime: number;
+    startTime: number;
     verificationHash: string;
 };
 
@@ -17,5 +17,5 @@ export const encryptSha256 = (str: string) => {
 export const verifyConditions = (conditions: Conditions) => {
     const hash = conditions.verificationHash;
     conditions.verificationHash = "";
-    return hash == encryptSha256(JSON.stringify(conditions));
+    return hash === encryptSha256(JSON.stringify(conditions));
 };

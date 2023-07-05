@@ -1,7 +1,7 @@
 import { createHash } from "crypto";
 
 export type Conditions = {
-    category: string;
+    category: number;
     requiredWords: string[];
     forbiddenWords: string[];
     startTime: number;

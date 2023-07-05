@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 interface ExtendNextApiRequest extends NextApiRequest {
     body: {
-        category: string;
+        category: number;
         requiredWords: string[];
         forbiddenWords: string[];
         startTime: number;
@@ -44,7 +44,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                     const result: Result = {
                         category: conditions.category,
                         text: req.body.text,
-                        score: score
+                        score: score[0]
                     };
                     res.status(200).json(result);
                 }).catch(() => {

@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(_req: NextApiRequest, res: NextApiResponse<Conditions>) {
     const conditions: Conditions = {
-        category: "test",
+        category: 0,
         requiredWords: ["test"],
         forbiddenWords: ["test"],
         startTime: Date.now(),

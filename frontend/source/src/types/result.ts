@@ -1,5 +1,5 @@
 export type Result = {
-    category: string;
+    category: number;
     text: string;
-    score: number[];
+    score: number;
 };

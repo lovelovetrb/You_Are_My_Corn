@@ -1,4 +1,7 @@
 export type Ranking = {
+    category: number;
     username: string;
-    score: number[];
-}
+    date: Date;
+    text: string;
+    score: number;
+};

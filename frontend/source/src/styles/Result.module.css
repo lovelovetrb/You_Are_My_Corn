@@ -1,0 +1,19 @@
+.result {
+    color: #ff527b;
+    text-align: center;
+}
+
+.inputNameArea {
+    margin-top: 50px;
+    font-size: 30px;
+}
+.resultArea {
+    margin-inline: auto;
+    font-size: 70px;
+}
+
+.buttonArea {
+    margin-inline: auto;
+    max-width: 50%;
+    width: 50%;
+}

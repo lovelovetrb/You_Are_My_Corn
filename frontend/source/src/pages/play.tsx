@@ -1,18 +1,38 @@
 import Head from "next/head";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 
-import Header from "@/components/header/Header";
-import Button from "@/components/button/Button";
-import ButtonArea from "@/components/buttonArea/ButtonArea";
+import styles from "@/styles/play.module.css";
+
+import { genreDict } from "@/lib/data";
+import { playDataAtom } from "@/lib/jotai";
+
+import { useSetAtom } from "jotai";
+
+import Text from "@/components/text/Text";
+import Box from "@/components/box/Box";
+import SpeechBuble from "@/components/speechBuble/SpeechBuble";
+import { MaxWidthLayout } from "@/components/MaxWidthLayout";
 
 export default function Play() {
-    const onClick = () => {
-        function fetchback() {
-            const data = fetch("http://localhost:5001");
-            console.log(data);
-        }
-        fetchback();
-    };
+    const [genre, setGenre] = useState<string>("");
+    const [requiredWord, setRequiredWord] = useState<string[]>([]);
+    const [forbiddenWord, setForbiddenWord] = useState<string[]>([]);
+    const setPlayData = useSetAtom(playDataAtom);
+
+    useEffect(() => {
+        const fetchStart = async () => {
+            await fetch("http://localhost:3000/api/start").then((res) => {
+                res.json().then((data) => {
+                    setGenre(genreDict[data.category]);
+                    setRequiredWord(data.requiredWords);
+                    setForbiddenWord(data.forbiddenWords);
+                    setPlayData(data);
+                });
+            });
+        };
+        fetchStart();
+    }, []);
+
     return (
         <>
             <Head>
@@ -21,14 +41,22 @@ export default function Play() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Header />
-            <button
-                onClick={() => {
-                    onClick();
-                }}
-            >
-                click
-            </button>
+            <div className={styles.themeArea}>
+                <Text text="あなたがめざすかんじょうは..." color="#ff527B" />
+                <h2 className={styles.theme}>{genre}</h2>
+            </div>
+            <div className={styles.boxArea}>
+                <Box heading="ぜったいにつかうワード" words={requiredWord} />
+                <Box heading="きんしワード" words={forbiddenWord} />
+            </div>
+            <div className={styles.textArea}>
+        {/* TODO: とうもろこしくんの追加*/}
+                <SpeechBuble />
+            </div>
         </>
     );
 }
+
+Play.getLayout = function getLayout(page: any) {
+    return <MaxWidthLayout>{page}</MaxWidthLayout>;
+};

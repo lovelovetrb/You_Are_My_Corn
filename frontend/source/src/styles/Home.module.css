@@ -1,1 +1,9 @@
+.main{
+width: 100%;
+}
 
+.container{
+    min-width: 800px;
+    max-width: 800px;
+    margin: 50px auto 100px;
+}

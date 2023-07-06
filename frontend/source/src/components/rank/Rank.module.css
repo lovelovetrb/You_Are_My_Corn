@@ -1,6 +1,7 @@
 .wrapper {
-    max-width: 70%;
+    width: 100%;
     margin: 0 auto;
+    color: #7b664b;
 }
 
 .genreArea {
@@ -11,19 +12,23 @@
 
 .genreButton {
     font-size: 1.3rem;
-    border: 1px solid #7b664b;
-    border-radius: 5px 5px 0 0;
+    border: 2px solid #7b664b;
     background-color: #ffffff;
     padding: 10px 20px;
     width: 100%;
+    text-align: center;
+}
+
+.isActive {
+    background-color: #0ffade;
 }
 
 .table {
     width: 100%;
-    background-color: #fed0db;
+    background-color: #b1fff6;
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid #7b664b;
+    border: 2px solid #7b664b;
 }
 
 .tableHead th {
@@ -31,14 +36,26 @@
     padding: 15px 20px;
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid #7b664b;
+    border: 2px solid #7b664b;
     letter-spacing: 2px;
 }
 
 .tableBody td {
     font-size: 1.3rem;
     padding: 15px 20px;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #7b664b;
 }
+
+.tableBody td:nth-child(1) {
+    width: 30%;
+  padding-left: 10%;
+}
+
+.score:before {
+    content: "トータルスコア";
+    margin-right: 10px;
+}
+
+.score:after {
+    content: "てん";
+}
+

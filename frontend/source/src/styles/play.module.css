@@ -1,0 +1,21 @@
+.themeArea {
+  color: #ff527B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme {
+  font-size: 70px;
+  padding-inline: 30px;
+}
+
+.boxArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textArea {
+  display: flex;
+}

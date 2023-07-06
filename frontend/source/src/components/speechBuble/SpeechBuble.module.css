@@ -1,0 +1,67 @@
+.wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    padding: 30px;
+    min-width: 70%;
+    color: #555;
+    font-size: 16px;
+    background: #fff;
+    border: solid 3px #7b664b;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.wrapper:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -24px;
+    margin-top: -12px;
+    border: 13px solid transparent;
+    border-right: 13px solid #fff;
+    z-index: 2;
+}
+
+.wrapper :after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -14px;
+    border: 15px solid transparent;
+    border-right: 15px solid #7b664b;
+    z-index: 1;
+}
+
+.heading {
+    color: #7b664b;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.inputArea {
+    display: flex;
+    border: 2px solid #000000;
+    background-color: #fffffe;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.inputArea textarea {
+    font-family: "Mochiy Pop One", sans-serif;
+    width: 90%;
+    max-width: 90%;
+    line-height: 2;
+}
+
+.inputArea button {
+    display: block;
+    text-align: center;
+    margin-inline: auto;
+    width: 10%;
+}
+
+.disabled {
+    opacity: 0.5;
+}

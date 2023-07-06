@@ -1,0 +1,42 @@
+.nameFormArea {
+    margin-top: 50px;
+    margin-inline: auto;
+    padding-bottom: 20px;
+    width: 550px;
+    max-width: 550px;
+    border: 5px solid #7b664b;
+    border-radius: 50px;
+    background-color: #fffee5;
+}
+
+.nameFormArea p {
+    color: #7b664b;
+    text-align: left;
+    margin: 10px 0px 10px 35px;
+}
+
+.form {
+    display: flex;
+    width: 75%;
+    margin-inline: auto;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+}
+
+.form input {
+    color: #7b664b;
+    width: 75%;
+    font-family: "Mochiy Pop One", sans-serif;
+    padding: 10px 0;
+}
+
+.form button {
+    color: #7b664b;
+    padding-left: 10px;
+}
+
+.disabled {
+    opacity: 0.5;
+}

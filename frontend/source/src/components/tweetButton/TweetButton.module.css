@@ -1,19 +1,23 @@
 .button {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 300px;
     font-family: "Cherry Bomb One", cursive;
     text-align: center;
     text-decoration: none;
     padding: 1rem 2rem;
-    border: 5px solid #ff527b;
     border-radius: 30px;
-    color: #ff527b;
-    background-color: #fffdc8;
+    color: white;
+    background-color: #1da1f2;
     font-size: 2rem;
 }
 
+.button p{
+  margin-left: 10px;
+}
+
 .button:hover {
-    background-color: #ff527b;
-    color: white;
+    opacity: 0.8;
     transition: 0.2s;
 }

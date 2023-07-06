@@ -1,4 +1,4 @@
-import { Conditions, verifyConditions } from "@/types/conditions";
+import { Conditions, verifyConditions } from "@/lib/conditions";
 import { Result } from "@/types/result";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -26,7 +26,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
             res.status(400).end("Time out");
             return;
         }
-        fetch("http://backend:5001/calc/", {
+        await fetch("http://backend:5001/calc/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -37,19 +37,23 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
         }).then((response) => {
             if (response.ok) {
                 const score: number[] = [];
-                response.json().then((json) => {
-                    for (const key in json) {
-                        score.push(Number(json[key]));
-                    }
-                    const result: Result = {
-                        category: conditions.category,
-                        text: req.body.text,
-                        score: score[0]
-                    };
-                    res.status(200).json(result);
-                }).catch(() => {
-                    res.status(500).end("Internal server error");
-                });
+                response
+                    .json()
+                    .then((json) => {
+                        for (const key in json) {
+                            score.push(Number(json[key]));
+                        }
+                        // TODO: Ranking も返すようにする
+                        const result: Result = {
+                            category: conditions.category,
+                            text: req.body.text,
+                            score: score[0],
+                        };
+                        res.status(200).json(result);
+                    })
+                    .catch(() => {
+                        res.status(500).end("Internal server error");
+                    });
             } else {
                 res.status(400).end("Bad request");
             }

@@ -1,66 +1,50 @@
 import styles from "@/components/rank/Rank.module.css";
 import { useState } from "react";
+import { Ranking } from "@/types/ranking";
 
-const Rank = () => {
-    const isactiveStyle = {
-        backgroundColor: "#ff527b",
-    };
+type props = {
+    ranking: Ranking[];
+};
+
+const Rank = ({ ranking }: props) => {
     const [active, setActive] = useState(0);
+    const category = ["よろこび", "いかり", "かなしみ", "きたい"];
+    const showRankingNum = 5;
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.genreArea}>
-                <button
-                    className={styles.genreButton}
-                    style={active === 0 ? isactiveStyle : {}}
-                    onClick={() => {
-                        setActive(0);
-                    }}
-                >
-                    うれしい
-                </button>
-                <button
-                    className={styles.genreButton}
-                    style={active === 1 ? isactiveStyle : {}}
-                    onClick={() => {
-                        setActive(1);
-                    }}
-                >
-                    おこる
-                </button>
-                <button
-                    className={styles.genreButton}
-                    style={active === 2 ? isactiveStyle : {}}
-                    onClick={() => {
-                        setActive(2);
-                    }}
-                >
-                    かなしい
-                </button>
-                <button
-                    className={styles.genreButton}
-                    style={active === 3 ? isactiveStyle : {}}
-                    onClick={() => {
-                        setActive(3);
-                    }}
-                >
-                    きたい
-                </button>
+                {category.map((item, index) => {
+                    return (
+                        <button
+                            key={index}
+                            className={`${styles.genreButton} ${active === index ? styles.isActive : ""}`}
+                            onClick={() => {
+                                setActive(index);
+                            }}
+                        >
+                            {item}
+                        </button>
+                    );
+                })}
             </div>
             <table className={styles.table}>
-                <thead>
-                    <tr className={styles.tableHead}>
-                        <th>らんく</th>
-                        <th>なまえ</th>
-                        <th>すこあ</th>
-                    </tr>
-                </thead>
                 <tbody>
-                    <tr className={styles.tableBody}>
-                        <td>1</td>
-                        <td>user1</td>
-                        <td>100</td>
-                    </tr>
+                    {/* TODO: fetch ranking data */}
+                    {ranking
+                        .filter((item) => item.category === active)
+                        .sort((a, b) => b.score - a.score)
+                        .map((item, index) => {
+                            if (index < showRankingNum) {
+                                return (
+                                    <tr key={index} className={styles.tableBody}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.username}</td>
+                                        <td className={styles.score}>{item.score}</td>
+                                    </tr>
+                                );
+                            }
+                        })}
                 </tbody>
             </table>
         </div>

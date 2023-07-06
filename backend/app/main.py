@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+import random
 
 app = FastAPI()
 
@@ -14,6 +15,9 @@ def root():
 
 
 @app.post("/calc/")
-async def calc(item: Item) -> list[float]:
+async def calc(item: Item) -> list[int]:
+    score = []
+    for _ in range(3):
+        score.append(random.randint(0, 100))
     # TODO: calculate the result
-    return [3.1, 4.0]
+    return score

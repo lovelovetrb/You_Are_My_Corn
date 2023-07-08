@@ -15,7 +15,7 @@ import pytorch_lightning as pl
 
 
 #データの読み込み
-df = pd.read_csv("data/train2.csv")
+df = pd.read_csv("data/train.csv")
 
 t1 = df.Sentence.values
 labels = df.label.values
@@ -160,49 +160,5 @@ bert_sc = BertForSequenceClassification.from_pretrained(
     './model_transformers'
 )
 
-# bert_sc
-bert_sc.cuda()
-
-df = pd.read_csv("test.csv", encoding="shift_jis")
-
-t1_test = df.Sentence.values
-labels_test = df.label.values
-
-predicted = []
-correct_labels = []
-wrong = []
-i = 0
-
-for x , label in zip(t1_test, labels_test):
-
-    correct_labels.append(label)
-    correct = label
-
-    encoding = tokenizer(
-            x,
-            max_length=max_length,
-            padding='max_length',
-            truncation=True,
-            return_tensors='pt'
-        )
-
-    #encoding = { k: v.cuda() for k, v in encoding.items() }
-    encoding = { k: v for k, v in encoding.items() }
-
-    with torch.no_grad():
-        output = bert_sc.forward(**encoding)
-        scores = output.logits
-        print(scores)
-        labels_predicted = scores[0].argmax(-1).cpu().numpy().tolist()
-        predicted.append(labels_predicted)
-
-    if labels_predicted == correct:
-        wrong.append(i)
-
-    i+= 1
-
-scores = Softmax(scores)
-
-print(predicted)
 
 

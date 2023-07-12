@@ -80,7 +80,7 @@ const Result = () => {
                         </div>
                         <div className={styles.inputNameArea}>
                             {/* TODO: ランク表示*/}
-                            <h2>あなたはだい◯いだよ。なまえをかいて、ランクインしよう</h2>
+                            <h2>あなたはだい{result.rank}いだよ。なまえをかいて、ランクインしよう</h2>
                             <NameForm />
                         </div>
                         <div className={styles.buttonArea}>

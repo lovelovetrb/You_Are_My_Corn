@@ -1,8 +1,12 @@
-import { verifySubmitData } from "@/lib/verify";
+import { encryptSha256, verifySubmitData } from "@/lib/verify";
 import { ResultData } from "@/types/resultData";
 import { SubmitData } from "@/types/submitData";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { encryptSha256 } from "@/lib/verify";
+
+import admin from "firebase-admin";
+import { cert } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import serviceAccount from "../../../firebase-adminsdk.json";
 
 interface ExtendNextApiRequest extends NextApiRequest {
     body: {
@@ -45,16 +49,33 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                         for (const key in json) {
                             score.push(Number(json[key]));
                         }
-                        // TODO: Ranking も返すようにする
-                        const result: ResultData = {
-                            category: submitData.category,
-                            text: req.body.text,
-                            score: score[0],
-                            rank: 0,
-                            verificationHash: "",
-                        };
-                        result.verificationHash = encryptSha256(JSON.stringify(result));
-                        res.status(200).json(result);
+
+                        if (admin.apps.length === 0) {
+                            admin.initializeApp({
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                credential: cert(serviceAccount as any),
+                            });
+                        }
+                        const store = getFirestore();
+
+                        const ref = store.collection("scores");
+                        const query = ref.where("category", "==", submitData.category).orderBy("score", "desc").where("score", ">=", score[0]).get();
+
+                        let rank = 0;
+                        query.then((snapshot) => {
+                            rank = snapshot.size + 1;
+                            const result: ResultData = {
+                                category: submitData.category,
+                                text: req.body.text,
+                                score: score[0],
+                                rank: rank,
+                                verificationHash: "",
+                            };
+                            result.verificationHash = encryptSha256(JSON.stringify(result));
+                            res.status(200).json(result);
+                        }).catch(() => {
+                            res.status(500).end("Internal server error");
+                        });
                     })
                     .catch(() => {
                         res.status(500).end("Internal server error");

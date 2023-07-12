@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import { Result } from "@/types/resultData";
+import { ResultData } from "@/types/resultData";
 
 import css from "@/components/tweetButton/TweetButton.module.css";
 
 type props = {
     text: string;
-    result?: Result;
+    result?: ResultData;
     onClickFunc?: () => void;
 };
 

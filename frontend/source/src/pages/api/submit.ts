@@ -59,7 +59,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                         const store = getFirestore();
 
                         const ref = store.collection("scores");
-                        const query = ref.where("category", "==", submitData.category).orderBy("score", "desc").where("score", ">=", score[0]).get();
+                        const query = ref.where("category", "==", submitData.category).orderBy("score", "desc").where("score", ">=", score[submitData.category]).get();
 
                         let rank = 0;
                         query.then((snapshot) => {
@@ -67,7 +67,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                             const result: ResultData = {
                                 category: submitData.category,
                                 text: req.body.text,
-                                score: score[0],
+                                score: score[submitData.category],
                                 rank: rank,
                                 verificationHash: "",
                             };

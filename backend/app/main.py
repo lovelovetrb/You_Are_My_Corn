@@ -17,7 +17,7 @@ def root():
 @app.post("/calc/")
 async def calc(item: Item) -> list[int]:
     score = []
-    for _ in range(3):
+    for _ in range(4):
         score.append(random.randint(0, 100))
     # TODO: calculate the result
     return score

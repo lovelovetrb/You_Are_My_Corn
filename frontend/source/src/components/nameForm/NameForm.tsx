@@ -1,15 +1,32 @@
 import styles from "@/components/nameForm/NameForm.module.css";
+import { ResultData } from "@/types/resultData";
 
 import { useState } from "react";
 
-const NameForm = () => {
+type props = {
+    resultData: ResultData;
+};
+
+const NameForm = ({ resultData }: props) => {
     const [name, setName] = useState<string>("");
     const [isSend, setIsSend] = useState<boolean>(false);
     const nameMaxLength = 10;
-    const handleClick = () => {
-        // TODO: ranking登録処理
-        alert(name);
-        setIsSend(true);
+    const handleClick = async () => {
+        resultData.username = name;
+        await fetch("http://localhost:3000/api/entry", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(resultData),
+        }).then((res) => {
+            if (res.ok) {
+                alert("登録しました");
+                setIsSend(true);
+            } else {
+                alert("登録に失敗しました");
+            }
+        });
     };
 
     return (

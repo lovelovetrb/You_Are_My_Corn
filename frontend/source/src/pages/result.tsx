@@ -29,6 +29,7 @@ const Result = () => {
         category: 0,
         score: 0,
         rank: 0,
+        verificationHash: "",
     });
 
     const router = useRouter();
@@ -82,7 +83,7 @@ const Result = () => {
                         <div className={styles.inputNameArea}>
                             {/* TODO: ランク表示*/}
                             <h2>あなたはだい{result.rank}いだよ。なまえをかいて、ランクインしよう</h2>
-                            <NameForm />
+                            <NameForm resultData={result} />
                         </div>
                         <div className={styles.buttonArea}>
                             <ButtonArea>

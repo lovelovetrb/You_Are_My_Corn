@@ -2,6 +2,7 @@ import { verifySubmitData } from "@/lib/verify";
 import { ResultData } from "@/types/resultData";
 import { SubmitData } from "@/types/submitData";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { encryptSha256 } from "@/lib/verify";
 
 interface ExtendNextApiRequest extends NextApiRequest {
     body: {
@@ -52,7 +53,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                             rank: 0,
                             verificationHash: "",
                         };
-                        // TODO:
+                        result.verificationHash = encryptSha256(JSON.stringify(result));
                         res.status(200).json(result);
                     })
                     .catch(() => {

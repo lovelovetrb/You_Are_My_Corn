@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import styles from "@/styles/play.module.css";
 
 import { genreDict } from "@/lib/data";
-import { playDataAtom } from "@/lib/jotai";
+import { conditionsDataAtom } from "@/lib/jotai";
 
 import { useSetAtom } from "jotai";
 
@@ -21,7 +21,7 @@ export default function Play() {
     const [requiredWord, setRequiredWord] = useState<string[]>([]);
     const [forbiddenWord, setForbiddenWord] = useState<string[]>([]);
     const [isLimit, setIsLimit] = useState<boolean>(false);
-    const setPlayData = useSetAtom(playDataAtom);
+    const setPlayData = useSetAtom(conditionsDataAtom);
     const time = new Date();
     const playTime = 120;
     time.setSeconds(time.getSeconds() + playTime);

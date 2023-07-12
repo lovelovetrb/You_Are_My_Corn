@@ -29,7 +29,8 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
     if (verifyResultData(resultData)) {
         if (admin.apps.length === 0) {
             admin.initializeApp({
-                credential: cert(serviceAccount),
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                credential: cert(serviceAccount as any),
             });
         }
         const store = getFirestore();

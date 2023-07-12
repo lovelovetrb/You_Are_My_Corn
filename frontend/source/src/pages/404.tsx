@@ -5,10 +5,10 @@ import Button from "@/components/button/Button";
 
 import Link from "next/link";
 
-const _400 = () => {
+const _404 = () => {
     return (
         <div style={{ textAlign: "center" }}>
-            <Text text="500エラーです... ごめんなさい" />
+            <Text text="404エラーです... ごめんなさい" />
             <div style={{ marginInline: "auto" }}>
                 <Link href="/">
                     <Button text="HOME" />
@@ -17,7 +17,7 @@ const _400 = () => {
         </div>
     );
 };
-_400.getLayout = function getLayout(page: any) {
+_404.getLayout = function getLayout(page: any) {
     return <Layout>{page}</Layout>;
 };
-export default _400;
+export default _404;

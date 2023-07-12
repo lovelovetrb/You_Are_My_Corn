@@ -1,4 +1,4 @@
-export type Ranking = {
+export type RankingData = {
     category: number;
     username: string;
     date: Date;

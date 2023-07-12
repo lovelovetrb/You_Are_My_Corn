@@ -1,38 +1,39 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
+import { conditionsDataAtom, textAtom } from "@/lib/jotai";
 import { useAtomValue } from "jotai";
-import { playDataAtom, textAtom } from "@/lib/jotai";
 
-import Button from "@/components/button/Button";
-import TweetButton from "@/components/tweetButton/TweetButton";
-import ButtonArea from "@/components/buttonArea/ButtonArea";
 import { MaxWidthLayout } from "@/components/MaxWidthLayout";
+import Button from "@/components/button/Button";
+import ButtonArea from "@/components/buttonArea/ButtonArea";
+import TweetButton from "@/components/tweetButton/TweetButton";
 
 import styles from "@/styles/Result.module.css";
 
-import { submitData } from "@/types/submitData";
-import { Result } from "@/types/result";
-import NameForm from "@/components/nameForm/NameForm";
 import Loading from "@/components/Loading";
+import NameForm from "@/components/nameForm/NameForm";
+import { ResultData } from "@/types/resultData";
+import { SubmitData } from "@/types/submitData";
 
 const Result = () => {
     const text = useAtomValue(textAtom);
-    const data = useAtomValue(playDataAtom);
+    const data = useAtomValue(conditionsDataAtom);
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [result, setResult] = useState<Result>({
+    const [result, setResult] = useState<ResultData>({
         text: "",
         category: 0,
         score: 0,
+        rank: 0,
     });
 
     const router = useRouter();
     useEffect(() => {
-        const postData: submitData = {
+        const postData: SubmitData = {
             category: data.category,
             requiredWords: data.requiredWords,
             forbiddenWords: data.forbiddenWords,
@@ -71,7 +72,7 @@ const Result = () => {
             </Head>
             <div className={styles.result}>
                 {!isLoaded ? (
-                    <Loading text="けっかをAIがけいさんちゅう"/>
+                    <Loading text="けっかをAIがけいさんちゅう" />
                 ) : (
                     <>
                         <div className={styles.resultArea}>

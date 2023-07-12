@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Result } from "@/types/result";
+import { Result } from "@/types/resultData";
 
 import css from "@/components/tweetButton/TweetButton.module.css";
 

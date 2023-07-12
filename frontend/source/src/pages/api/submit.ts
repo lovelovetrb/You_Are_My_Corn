@@ -1,5 +1,5 @@
 import { Conditions, verifyConditions } from "@/lib/conditions";
-import { Result } from "@/types/result";
+import { ResultData } from "@/types/resultData";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 interface ExtendNextApiRequest extends NextApiRequest {
@@ -13,7 +13,7 @@ interface ExtendNextApiRequest extends NextApiRequest {
     };
 }
 
-export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<Result>) {
+export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<ResultData>) {
     const conditions: Conditions = {
         category: req.body.category,
         requiredWords: req.body.requiredWords,
@@ -44,10 +44,11 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                             score.push(Number(json[key]));
                         }
                         // TODO: Ranking も返すようにする
-                        const result: Result = {
+                        const result: ResultData = {
                             category: conditions.category,
                             text: req.body.text,
                             score: score[0],
+                            rank: 0,
                         };
                         res.status(200).json(result);
                     })

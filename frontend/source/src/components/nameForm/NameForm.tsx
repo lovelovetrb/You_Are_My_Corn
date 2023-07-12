@@ -5,10 +5,11 @@ import { useState } from "react";
 const NameForm = () => {
     const [name, setName] = useState<string>("");
     const [isSend, setIsSend] = useState<boolean>(false);
+    const nameMaxLength = 10;
     const handleClick = () => {
         // TODO: ranking登録処理
-        setIsSend(true);
         alert(name);
+        setIsSend(true);
     };
 
     return (
@@ -22,9 +23,9 @@ const NameForm = () => {
                     }}
                 />
                 <button
-                    className={name.length === 0 || name.length > 10 || isSend ? styles.disabled : ""}
+                    className={name.length === 0 || name.length > nameMaxLength || isSend ? styles.disabled : ""}
                     onClick={handleClick}
-                    disabled={name.length === 0 || name.length > 10 || isSend}
+                    disabled={name.length === 0 || name.length > nameMaxLength || isSend}
                 >
                     OK
                 </button>

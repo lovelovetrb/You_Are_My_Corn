@@ -30,16 +30,13 @@ export default function Home() {
             <main className={styles.main}>
                 <Text text="この「キモチ」、うまくあのコにつたえたい。" />
                 <ButtonArea>
-                    {/* TODO:Floatwindow */}
+                    {/* TODO: あそびかたをひょうじするFloatwindow */}
                     <Button text="あそびかた" />
                     <Link href="/play">
                         <Button text="GAME START" />
                     </Link>
                 </ButtonArea>
-                <Text
-                    text="☆ スコアランキング ☆
-          "
-                />
+                <Text text="★ スコアランキング ★" />
                 <Rank ranking={ranking} />
             </main>
         </>

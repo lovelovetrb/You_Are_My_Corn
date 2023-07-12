@@ -1,21 +1,25 @@
 .themeArea {
-  color: #ff527B;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    color: #ff527b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .theme {
-  font-size: 70px;
-  padding-inline: 30px;
+    font-size: 70px;
+    padding-inline: 30px;
 }
 
 .boxArea {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .textArea {
-  display: flex;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

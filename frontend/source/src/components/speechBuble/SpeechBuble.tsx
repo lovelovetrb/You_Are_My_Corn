@@ -1,6 +1,7 @@
 import TextareaAutosize from "react-textarea-autosize";
 
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import { useState } from "react";
 
@@ -9,9 +10,10 @@ import { textAtom } from "@/lib/jotai";
 
 import styles from "@/components/speechBuble/SpeechBuble.module.css";
 
-// TODO: 送信時の挙動
-// TODO: 送信ボタンのスタイル
-const SpeechBuble = () => {
+type Props = {
+    isLimit: boolean;
+};
+const SpeechBuble = ({ isLimit }: Props) => {
     const [text, setText] = useState("");
     const setPleyText = useSetAtom(textAtom);
     const router = useRouter();
@@ -32,14 +34,14 @@ const SpeechBuble = () => {
                 }}
             >
                 <TextareaAutosize
+                    disabled={isLimit}
                     minRows={5}
                     onChange={(e) => {
                         setText(e.target.value);
                     }}
                 />
-                {/* TODO: 画像の追加（送信ボタン） */}
                 <button disabled={text.length === 0} className={text.length === 0 ? styles.disabled : ""}>
-                    おくる
+                    <Image src="/submit_button.svg" alt="send" width={50} height={50} />
                 </button>
             </form>
         </div>

@@ -47,7 +47,7 @@
 
 .tableBody td:nth-child(1) {
     width: 30%;
-  padding-left: 10%;
+    padding-left: 10%;
 }
 
 .score:before {
@@ -58,4 +58,3 @@
 .score:after {
     content: "てん";
 }
-

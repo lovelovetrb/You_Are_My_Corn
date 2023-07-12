@@ -35,10 +35,16 @@ const Rank = ({ ranking }: props) => {
                         .filter((item) => item.category === active)
                         .sort((a, b) => b.score - a.score)
                         .map((item, index) => {
+                            const clown = {
+                                backgroundImage: `url(/clown${index + 1}.svg)`,
+                                backgroundRepeat: "no-repeat",
+                                backgroundSize: "contain",
+                                backgroundPosition: "40px",
+                            };
                             if (index < showRankingNum) {
                                 return (
                                     <tr key={index} className={styles.tableBody}>
-                                        <td>{index + 1}</td>
+                                        <td style={index < 3 ? (clown as React.CSSProperties) : undefined}>{index + 1}</td>
                                         <td>{item.username}</td>
                                         <td className={styles.score}>{item.score}</td>
                                     </tr>

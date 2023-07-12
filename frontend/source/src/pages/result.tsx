@@ -81,7 +81,6 @@ const Result = () => {
                             <h2>{result.score}</h2>
                         </div>
                         <div className={styles.inputNameArea}>
-                            {/* TODO: ランク表示*/}
                             <h2>あなたはだい{result.rank}いだよ。なまえをかいて、ランクインしよう</h2>
                             <NameForm resultData={result} />
                         </div>

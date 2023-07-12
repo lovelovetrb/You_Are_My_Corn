@@ -3,4 +3,6 @@ export type ResultData = {
     text: string;
     score: number;
     rank: number;
+    username?: string;
+    verificationHash: string;
 };

@@ -3,6 +3,6 @@ export type SubmitData = {
     requiredWords: string[];
     forbiddenWords: string[];
     startTime: number;
-    text: string;
+    text?: string;
     verificationHash: string;
 };

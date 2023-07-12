@@ -1,5 +1,6 @@
-import { Conditions, verifyConditions } from "@/lib/conditions";
+import { verifySubmitData } from "@/lib/verify";
 import { ResultData } from "@/types/resultData";
+import { SubmitData } from "@/types/submitData";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 interface ExtendNextApiRequest extends NextApiRequest {
@@ -14,15 +15,15 @@ interface ExtendNextApiRequest extends NextApiRequest {
 }
 
 export default async function handler(req: ExtendNextApiRequest, res: NextApiResponse<ResultData>) {
-    const conditions: Conditions = {
+    const submitData: SubmitData = {
         category: req.body.category,
         requiredWords: req.body.requiredWords,
         forbiddenWords: req.body.forbiddenWords,
         startTime: req.body.startTime,
         verificationHash: req.body.verificationHash,
     };
-    if (verifyConditions(conditions)) {
-        if (Date.now() - conditions.startTime > 2 * 60 * 1000) {
+    if (verifySubmitData(submitData)) {
+        if (Date.now() - submitData.startTime > 2 * 60 * 1000) {
             res.status(400).end("Time out");
             return;
         }
@@ -45,11 +46,13 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                         }
                         // TODO: Ranking も返すようにする
                         const result: ResultData = {
-                            category: conditions.category,
+                            category: submitData.category,
                             text: req.body.text,
                             score: score[0],
                             rank: 0,
+                            verificationHash: "",
                         };
+                        // TODO:
                         res.status(200).json(result);
                     })
                     .catch(() => {

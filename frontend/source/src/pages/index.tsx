@@ -1,17 +1,20 @@
 import Head from "next/head";
 import Link from "next/link";
 
+import { useState, useEffect } from "react";
+
 import styles from "@/styles/Home.module.css";
 
 import Text from "@/components/text/Text";
 import Button from "@/components/button/Button";
 import ButtonArea from "@/components/buttonArea/ButtonArea";
 import Rank from "@/components/rank/Rank";
-import { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
+import FloatingWindow from "@/components/floatingWindow/FloatingWindow";
 
 export default function Home() {
     const [ranking, setRanking] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
     useEffect(() => {
         const getRanking = async () => {
             const res = await fetch("http://localhost:3000/api/ranking").then((res) => res.json());
@@ -19,6 +22,9 @@ export default function Home() {
         };
         getRanking();
     }, []);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
     return (
         <>
             <Head>
@@ -30,8 +36,8 @@ export default function Home() {
             <main className={styles.main}>
                 <Text text="この「キモチ」、うまくあのコにつたえたい。" />
                 <ButtonArea>
-                    {/* TODO: あそびかたをひょうじするFloatwindow */}
-                    <Button text="あそびかた" />
+                    <Button text="あそびかた" onClickFunc={toggle}/>
+                    {isOpen && <FloatingWindow />}
                     <Link href="/play">
                         <Button text="GAME START" />
                     </Link>

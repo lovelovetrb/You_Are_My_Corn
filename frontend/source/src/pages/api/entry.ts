@@ -23,6 +23,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
     };
     if (verifyResultData(resultData)) {
         // :TODO
+        res.status(200).end("OK");
 
     } else {
         res.status(400).end("Invalid verification hash");

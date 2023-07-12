@@ -1,4 +1,4 @@
-export type SubmitData = {
+export type submit = {
     category: number;
     requiredWords: string[];
     forbiddenWords: string[];

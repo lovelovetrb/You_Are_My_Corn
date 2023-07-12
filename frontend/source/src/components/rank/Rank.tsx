@@ -1,9 +1,9 @@
 import styles from "@/components/rank/Rank.module.css";
+import { RankingData } from "@/types/rankingData";
 import { useState } from "react";
-import { Ranking } from "@/types/ranking";
 
 type props = {
-    ranking: Ranking[];
+    ranking: RankingData[];
 };
 
 const Rank = ({ ranking }: props) => {

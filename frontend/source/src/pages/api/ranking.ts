@@ -1,9 +1,9 @@
-import { Ranking } from "@/types/ranking";
+import { RankingData } from "@/types/rankingData";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(_req: NextApiRequest, res: NextApiResponse<Ranking[]>) {
+export default async function handler(_req: NextApiRequest, res: NextApiResponse<RankingData[]>) {
     // dummy ranking data
-    const ranking: Ranking[] = [
+    const ranking: RankingData[] = [
     ];
     for (let i = 0; i < 20; i++) {
         ranking.push({

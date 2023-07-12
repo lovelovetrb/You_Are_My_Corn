@@ -1,7 +1,7 @@
-import { PlayData } from "@/types/playData";
+import { ConditionsData } from "@/types/conditionsData";
 import { atom } from "jotai";
 
-export const playDataAtom = atom<PlayData>({
+export const conditionsDataAtom = atom<ConditionsData>({
     category: 0,
     requiredWords: [],
     forbiddenWords: [],

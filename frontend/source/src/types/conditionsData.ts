@@ -1,4 +1,4 @@
-export type PlayData = {
+export type ConditionsData = {
     category: number;
     requiredWords: string[];
     forbiddenWords: string[];

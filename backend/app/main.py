@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-import random
+from predict_feel import PredictFeel
 
+predict_feel = PredictFeel()
 app = FastAPI()
 
 
@@ -16,8 +17,6 @@ def root():
 
 @app.post("/calc/")
 async def calc(item: Item) -> list[int]:
-    score = []
-    for _ in range(4):
-        score.append(random.randint(0, 100))
-    # TODO: calculate the result
+    score = predict_feel.predict(item.text)
+    
     return score

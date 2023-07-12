@@ -1,3 +1,0 @@
-lr: 2.0e-05
-model_name: cl-tohoku/bert-base-japanese-whole-word-masking
-num_labels: 4

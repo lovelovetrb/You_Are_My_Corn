@@ -1,4 +1,5 @@
 frontend/source/firebase-adminsdk.json
-
+backend/app/model_transformers/pytorch_model.bin
 .vscode
 .sh
+.bin

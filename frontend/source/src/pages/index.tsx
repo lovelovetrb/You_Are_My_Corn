@@ -25,6 +25,7 @@ export default function Home() {
     const toggle = () => {
         setIsOpen(!isOpen);
     };
+
     return (
         <>
             <Head>
@@ -36,8 +37,8 @@ export default function Home() {
             <main className={styles.main}>
                 <Text text="この「キモチ」、うまくあのコにつたえたい。" />
                 <ButtonArea>
-                    <Button text="あそびかた" onClickFunc={toggle}/>
-                    {isOpen && <FloatingWindow />}
+                    <Button text="あそびかた" onClickFunc={toggle} />
+                    {isOpen && <FloatingWindow setIsOpen={setIsOpen} />}
                     <Link href="/play">
                         <Button text="GAME START" />
                     </Link>

@@ -1,0 +1,25 @@
+.txt {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    left: 0;
+    height: 100vh;
+    z-index: 1000000;
+    background-color: rgba(255, 244, 142, 0.9);
+}
+
+.flexbox {
+    display: flex;
+    font-size: 5rem;
+    color: #FF527B;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.howtouse {
+    font-size: 50px;
+    color: rgb(123, 102, 75);
+    max-width: 80%;
+    margin: 5% auto 10% auto;
+}

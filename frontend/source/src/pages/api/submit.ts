@@ -7,6 +7,7 @@ import admin from "firebase-admin";
 import { cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import serviceAccount from "../../../firebase-adminsdk.json";
+import { textAtom } from "@/lib/jotai";
 
 interface ExtendNextApiRequest extends NextApiRequest {
     body: {
@@ -27,11 +28,13 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
         startTime: req.body.startTime,
         verificationHash: req.body.verificationHash,
     };
+
     if (verifySubmitData(submitData)) {
         if (Date.now() - submitData.startTime > 2 * 60 * 1000) {
             res.status(400).end("Time out");
             return;
         }
+       
         await fetch("http://backend:5001/calc/", {
             method: "POST",
             headers: {
@@ -55,6 +58,15 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                 credential: cert(serviceAccount as any),
                             });
+                        }
+                        var text = req.body.text;
+                        for(var word in submitData.forbiddenWords) {
+                            var result = text.includes(word);
+                            if(result = true){
+                                score[submitData.category] = 0;
+                                console.log(submitData.forbiddenWords)
+                                break;
+                            };
                         }
                         const store = getFirestore();
 

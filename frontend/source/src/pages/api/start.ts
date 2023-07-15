@@ -5,7 +5,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 export default async function handler(_req: NextApiRequest, res: NextApiResponse<SubmitData>) {
     //TODO: 返すデータの作成
     
-    const forbiddenWordsList = [["嬉しい","美味しい","楽しい","喜","幸せ","快感","感激","笑顔","元気","ありがとう"],
+    const forbiddenWordsList = [["嬉しい","美味しい","楽しい","喜","幸せ","快感","感激","笑顔","元気","ありがとう","興奮"],
                             ["怒","憤","キレ","破壊","腹立つ","不機嫌","反発"],
                             ["悔しい","悲","哀","切ない","寂しい","嘆","哭","悼","嘆き","泣","壊れる","孤独","喪失","苦悩","不快"],
                             ["楽しみ","期待","希望","予測","きぼう","胸が膨らむ","待つ","未来","可能性","心躍る","待ち望む","見込む"] 

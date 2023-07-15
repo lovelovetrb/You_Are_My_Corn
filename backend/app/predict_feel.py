@@ -1,4 +1,5 @@
 import torch
+import numpy as np
 from transformers import BertJapaneseTokenizer, BertForSequenceClassification
 import torch.nn.functional as F
 
@@ -28,9 +29,11 @@ class PredictFeel:
         scores = F.softmax(scores, dim=1)
         array = scores.cpu().numpy()
         array = array[0]
-        array = array*100
+        array *= 100
         integer_array = []
         for x in array:
-            x = int(x)
+            index = np.round(x, 1)
+            # print(x)
+            x = int(index)
             integer_array.append(x)
         return integer_array

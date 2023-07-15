@@ -11,16 +11,20 @@ import ButtonArea from "@/components/buttonArea/ButtonArea";
 import Rank from "@/components/rank/Rank";
 import { Layout } from "@/components/Layout";
 import FloatingWindow from "@/components/floatingWindow/FloatingWindow";
+import Loading from "@/components/Loading";
 
 export default function Home() {
     const [ranking, setRanking] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         const getRanking = async () => {
             const res = await fetch("http://localhost:3000/api/ranking").then((res) => res.json());
             setRanking(res);
+            setIsLoaded(true)
         };
         getRanking();
+
     }, []);
     const toggle = () => {
         setIsOpen(!isOpen);
@@ -44,7 +48,11 @@ export default function Home() {
                     </Link>
                 </ButtonArea>
                 <Text text="★ スコアランキング ★" />
-                <Rank ranking={ranking} />
+                {!isLoaded ? (
+                    <Loading text="けっかをロードちゅう" />
+                ) : (
+                    <Rank ranking={ranking} />
+                )}
             </main>
         </>
     );

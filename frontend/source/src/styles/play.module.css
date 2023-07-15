@@ -13,7 +13,8 @@
 .boxArea {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
+    font-family: "Mochiy Pop One", sans-serif;
 }
 
 .textArea {

@@ -11,20 +11,25 @@ import ButtonArea from "@/components/buttonArea/ButtonArea";
 import Rank from "@/components/rank/Rank";
 import { Layout } from "@/components/Layout";
 import FloatingWindow from "@/components/floatingWindow/FloatingWindow";
+import Loading from "@/components/Loading";
 
 export default function Home() {
     const [ranking, setRanking] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         const getRanking = async () => {
             const res = await fetch("http://localhost:3000/api/ranking").then((res) => res.json());
             setRanking(res);
+            setIsLoaded(true)
         };
         getRanking();
+
     }, []);
     const toggle = () => {
         setIsOpen(!isOpen);
     };
+
     return (
         <>
             <Head>
@@ -36,14 +41,18 @@ export default function Home() {
             <main className={styles.main}>
                 <Text text="この「キモチ」、うまくあのコにつたえたい。" />
                 <ButtonArea>
-                    <Button text="あそびかた" onClickFunc={toggle}/>
-                    {isOpen && <FloatingWindow />}
+                    <Button text="あそびかた" onClickFunc={toggle} />
+                    {isOpen && <FloatingWindow setIsOpen={setIsOpen} />}
                     <Link href="/play">
                         <Button text="GAME START" />
                     </Link>
                 </ButtonArea>
                 <Text text="★ スコアランキング ★" />
-                <Rank ranking={ranking} />
+                {!isLoaded ? (
+                    <Loading text="けっかをロードちゅう" />
+                ) : (
+                    <Rank ranking={ranking} />
+                )}
             </main>
         </>
     );

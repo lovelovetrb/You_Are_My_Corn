@@ -1,0 +1,2 @@
+backend/app/model_transformers/*.bin filter=lfs diff=lfs merge=lfs -text
+/frontend/source/firebase-adminsdk.json filter=lfs diff=lfs merge=lfs -text

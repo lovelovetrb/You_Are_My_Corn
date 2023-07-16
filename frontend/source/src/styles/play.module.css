@@ -33,6 +33,16 @@
 }
 
 @media screen and (max-width:600px) {
+    .themeArea {
+        /* margin-left: 0; */
+
+    }
+
+    .theme {
+        font-size: 25px;
+        padding-inline: 0;
+    }
+
     .cornLogo {
         display: none;
     }

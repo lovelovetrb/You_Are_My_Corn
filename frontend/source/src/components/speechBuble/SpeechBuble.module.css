@@ -65,3 +65,17 @@
 .disabled {
     opacity: 0.5;
 }
+
+@media screen and (max-width: 1200px) {
+    /* .text {
+      font-size: 30px;
+      margin: 30px 20px;
+    } */
+}
+
+@media screen and (max-width: 600px) {
+    .inputArea textarea {
+        width: 75%;
+        max-width: 90%;
+    }
+}

@@ -8,5 +8,5 @@ type Data = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const data = await fetch("http://backend:5001");
     const json = await data.json();
-    res.status(200).json( json );
+    res.status(200).json(json);
 }

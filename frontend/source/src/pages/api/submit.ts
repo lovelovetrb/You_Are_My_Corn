@@ -7,7 +7,6 @@ import admin from "firebase-admin";
 import { cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import serviceAccount from "../../../firebase-adminsdk.json";
-import { textAtom } from "@/lib/jotai";
 
 interface ExtendNextApiRequest extends NextApiRequest {
     body: {
@@ -34,7 +33,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
             res.status(400).end("Time out");
             return;
         }
-       
+
         await fetch("http://backend:5001/calc/", {
             method: "POST",
             headers: {
@@ -59,15 +58,26 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                                 credential: cert(serviceAccount as any),
                             });
                         }
-                        var text = req.body.text;
-                        for(var word in submitData.forbiddenWords) {
-                            var result = text.includes(word);
-                            if(result = true){
+                        const text = req.body.text;
+                        for (const i in submitData.forbiddenWords) {
+                            const word = submitData.forbiddenWords[i];
+                            const result = text.includes(word);
+                            if (result) {
                                 score[submitData.category] = 0;
-                                console.log(submitData.forbiddenWords)
+                                console.log(text);
                                 break;
-                            };
+                            }
                         }
+                        for (const i in submitData.requiredWords) {
+                            const word = submitData.requiredWords[i];
+                            const result = text.includes(word);
+                            if (!result) {
+                                score[submitData.category] = 0;
+                                console.log(text);
+                                break;
+                            }
+                        }
+
                         const store = getFirestore();
 
                         const ref = store.collection("scores");

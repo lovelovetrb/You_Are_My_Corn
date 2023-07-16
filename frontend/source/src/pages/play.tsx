@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "@/styles/play.module.css";
 
@@ -10,11 +10,12 @@ import { conditionsDataAtom } from "@/lib/jotai";
 
 import { useSetAtom } from "jotai";
 
-import Text from "@/components/text/Text";
+import { MaxWidthLayout } from "@/components/MaxWidthLayout";
 import Box from "@/components/box/Box";
 import SpeechBuble from "@/components/speechBuble/SpeechBuble";
-import { MaxWidthLayout } from "@/components/MaxWidthLayout";
+import Text from "@/components/text/Text";
 import Timer from "@/components/timer/Timer";
+import Config from "@/lib/config";
 
 export default function Play() {
     const [genre, setGenre] = useState<string>("");
@@ -28,7 +29,7 @@ export default function Play() {
 
     useEffect(() => {
         const fetchStart = async () => {
-            await fetch("http://localhost:3000/api/start").then((res) => {
+            await fetch(Config.apiUrl + "api/start").then((res) => {
                 res.json().then((data) => {
                     setGenre(genreDict[data.category]);
                     setRequiredWord(data.requiredWords);

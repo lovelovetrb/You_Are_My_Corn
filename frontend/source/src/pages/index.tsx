@@ -1,17 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "@/styles/Home.module.css";
 
-import Text from "@/components/text/Text";
+import { Layout } from "@/components/Layout";
+import Loading from "@/components/Loading";
 import Button from "@/components/button/Button";
 import ButtonArea from "@/components/buttonArea/ButtonArea";
-import Rank from "@/components/rank/Rank";
-import { Layout } from "@/components/Layout";
 import FloatingWindow from "@/components/floatingWindow/FloatingWindow";
-import Loading from "@/components/Loading";
+import Rank from "@/components/rank/Rank";
+import Text from "@/components/text/Text";
+import Config from "@/lib/config";
 
 export default function Home() {
     const [ranking, setRanking] = useState([]);
@@ -19,12 +20,12 @@ export default function Home() {
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         const getRanking = async () => {
-            const res = await fetch("http://localhost:3000/api/ranking").then((res) => res.json());
+            console.log(Config.apiUrl + "api/ranking");
+            const res = await fetch(Config.apiUrl + "api/ranking").then((res) => res.json());
             setRanking(res);
-            setIsLoaded(true)
+            setIsLoaded(true);
         };
         getRanking();
-
     }, []);
     const toggle = () => {
         setIsOpen(!isOpen);
@@ -48,11 +49,7 @@ export default function Home() {
                     </Link>
                 </ButtonArea>
                 <Text text="★ スコアランキング ★" />
-                {!isLoaded ? (
-                    <Loading text="けっかをロードちゅう" />
-                ) : (
-                    <Rank ranking={ranking} />
-                )}
+                {!isLoaded ? <Loading text="けっかをロードちゅう" /> : <Rank ranking={ranking} />}
             </main>
         </>
     );

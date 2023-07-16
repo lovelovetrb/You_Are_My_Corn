@@ -16,6 +16,7 @@ import styles from "@/styles/Result.module.css";
 
 import Loading from "@/components/Loading";
 import NameForm from "@/components/nameForm/NameForm";
+import Config from "@/lib/config";
 import { ResultData } from "@/types/resultData";
 import { SubmitData } from "@/types/submitData";
 
@@ -43,7 +44,7 @@ const Result = () => {
             verificationHash: data.verificationHash,
         };
         const postDataToApi = async () => {
-            await fetch("http://localhost:3000/api/submit", {
+            await fetch(Config.apiUrl + "api/submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

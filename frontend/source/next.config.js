@@ -4,6 +4,9 @@ const nextConfig = {
     experimental: {
         optimizeFonts: true,
     },
+    env: {
+        API_ORIGIN: "http://localhost:3000/",
+    },
 };
 
 module.exports = nextConfig;

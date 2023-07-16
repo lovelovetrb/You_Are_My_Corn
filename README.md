@@ -19,6 +19,13 @@ You Are My Corn!は「好き」を「好き」という言葉を使わずにト�
 ・　送信するとスコアが表示される。HOME画面のランキングにランクインしたい場合は名前を入力し、OKを押す.
 　　
 ## Tech stack
+### AI-model
+- [bert-base-japanese-whole-word-masking](https://huggingface.co/cl-tohoku/bert-base-japanese-whole-word-masking)
+
+### AI-train-data
+- [wrime](https://github.com/ids-cv/wrime)
+
+
 
 ## URL
 

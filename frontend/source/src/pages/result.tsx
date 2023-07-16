@@ -91,7 +91,7 @@ const Result = () => {
                                 } else if (result.score >= 80) {
                                     return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれのマスター!`}</h2>;
                                 } else if (result.score >= 50) {
-                                    return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれのベテラン`}</h2>;
+                                    return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれベテラン`}</h2>;
                                 } else if (result.score >= 20) {
                                     return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれかけだし`}</h2>;
                                 } else {

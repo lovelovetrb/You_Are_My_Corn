@@ -18,10 +18,11 @@
 }
 
 .howtouse {
-    font-size: 50px;
+    font-size: 30px;
     color: rgb(123, 102, 75);
     max-width: 80%;
     margin: 20px auto;
+    font-family: "Mochiy Pop One", sans-serif;
 }
 
 @media screen and (max-width: 1200px) {
@@ -29,16 +30,18 @@
         font-size: 50px;
         margin: 10px;
     }
+
     .howtouse {
         font-size: 40px;
     }
 }
 
 @media screen and (max-width: 600px) {
-  .flexbox {
+    .flexbox {
         font-size: 40px;
         margin: 10px;
     }
+
     .howtouse {
         font-size: 30px;
     }

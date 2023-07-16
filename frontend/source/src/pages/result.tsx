@@ -17,6 +17,7 @@ import styles from "@/styles/Result.module.css";
 import Loading from "@/components/Loading";
 import NameForm from "@/components/nameForm/NameForm";
 import Config from "@/lib/config";
+import { num2category } from "@/lib/num2category";
 import { ResultData } from "@/types/resultData";
 import { SubmitData } from "@/types/submitData";
 
@@ -83,21 +84,17 @@ const Result = () => {
                         </div>
                         <div>
                             {(() => {
-                            if (data.score == 100) {
-                                return <h2>{`称号: エモちゃれのを極めし者`}</h2>
-                            }
-                            else if(data.score >= 80){
-                                return <h2>{`称号: エモちゃれのマスター!`}</h2>
-                            } 
-                            else if(data.score >= 50){
-                                return <h2>{`称号: エモちゃれのベテラン`}</h2>
-                            } 
-                            else if(data.score >= 20){
-                                return <h2>{`称号: のエモちゃれ駆け出し`}</h2>
-                            } 
-                            else {
-                                return <h2>{`称号: 口下手...`}</h2>
-                            } 
+                                if (result.score == 100) {
+                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれのを極めし者`}</h2>;
+                                } else if (result.score >= 80) {
+                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれのマスター!`}</h2>;
+                                } else if (result.score >= 50) {
+                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれのベテラン`}</h2>;
+                                } else if (result.score >= 20) {
+                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれ駆け出し`}</h2>;
+                                } else {
+                                    return <h2>{"称号: 口下手..."}</h2>;
+                                }
                             })()}
                         </div>
                         <div className={styles.inputNameArea}>

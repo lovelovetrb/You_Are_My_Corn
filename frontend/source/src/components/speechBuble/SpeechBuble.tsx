@@ -1,12 +1,12 @@
 import TextareaAutosize from "react-textarea-autosize";
 
-import { useRouter } from "next/router";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import { useState } from "react";
 
-import { useSetAtom } from "jotai";
 import { textAtom } from "@/lib/jotai";
+import { useSetAtom } from "jotai";
 
 import styles from "@/components/speechBuble/SpeechBuble.module.css";
 

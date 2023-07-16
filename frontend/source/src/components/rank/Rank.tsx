@@ -1,6 +1,7 @@
 import styles from "@/components/rank/Rank.module.css";
 import { category } from "@/lib/num2category";
 import { RankingData } from "@/types/rankingData";
+import Image from "next/image";
 import { useState } from "react";
 
 type props = {
@@ -34,15 +35,21 @@ const Rank = ({ ranking }: props) => {
                         .filter((item) => item.category === active)
                         .sort((a, b) => b.score - a.score)
                         .map((item, index) => {
-                            const clown = {
-                                backgroundImage: `url(/clown${index + 1}.svg)`,
-                                backgroundRepeat: "no-repeat",
-                                backgroundSize: "contain",
-                            };
                             if (index < showRankingNum) {
-                                return (
+                                return index < 3 ? (
                                     <tr key={index} className={styles.tableBody}>
-                                        <td style={index < 3 ? (clown as React.CSSProperties) : undefined}>{index + 1}</td>
+                                        <td>
+                                            <div className={styles.clownWrapper}>
+                                                <Image src={`/clown${index + 1}.svg`} alt="clown" width={80} height={80} />
+                                                <p className={styles.clown}>{index + 1}</p>
+                                            </div>
+                                        </td>
+                                        <td>{item.username}</td>
+                                        <td className={styles.score}>{item.score}</td>
+                                    </tr>
+                                ) : (
+                                    <tr key={index} className={styles.tableBody}>
+                                        <td>{index + 1}</td>
                                         <td>{item.username}</td>
                                         <td className={styles.score}>{item.score}</td>
                                     </tr>

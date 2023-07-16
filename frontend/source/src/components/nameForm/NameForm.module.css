@@ -2,7 +2,7 @@
     margin-top: 50px;
     margin-inline: auto;
     padding-bottom: 20px;
-    width: 550px;
+    /* width: 550px; */
     max-width: 550px;
     border: 5px solid #7b664b;
     border-radius: 50px;
@@ -39,4 +39,15 @@
 
 .disabled {
     opacity: 0.5;
+}
+
+@media screen and (max-width: 600px) {
+    .nameFormArea {
+        font-size: 20px;
+        border-radius: 20px;
+    }
+
+    .form {
+        width: 90%;
+    }
 }

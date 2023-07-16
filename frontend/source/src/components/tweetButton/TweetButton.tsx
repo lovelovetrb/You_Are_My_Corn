@@ -29,7 +29,7 @@ const TweetButton = ({ text, result, onClickFunc }: props) => {
 
         <a
             className={css.button}
-            href={`http://twitter.com/share?url=${location.href}&text=${result.score}%0a&text=${result.text}%0a&hashtags=エモちゃれ`}
+            href={`http://twitter.com/share?url=${location.href}&text=${result.text}%0a私のスコアは！！！${result.score}ダ！！！%0a&hashtags=エモちゃれ`}
             target="_blank"
             rel="noreferrer"
         >

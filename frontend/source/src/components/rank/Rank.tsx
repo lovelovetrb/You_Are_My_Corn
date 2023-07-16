@@ -37,7 +37,7 @@ const Rank = ({ ranking }: props) => {
                         .map((item, index) => {
                             if (index < showRankingNum) {
                                 return index < 3 ? (
-                                    <tr key={index} className={styles.tableBody}>
+                                    <tr key={index} className={styles.clownRow}>
                                         <td>
                                             <div className={styles.clownWrapper}>
                                                 <Image src={`/clown${index + 1}.svg`} alt="clown" width={80} height={80} />
@@ -48,8 +48,13 @@ const Rank = ({ ranking }: props) => {
                                         <td className={styles.score}>{item.score}</td>
                                     </tr>
                                 ) : (
-                                    <tr key={index} className={styles.tableBody}>
-                                        <td>{index + 1}</td>
+                                    <tr key={index} className={styles.clownRow}>
+                                        <td>
+                                            <div className={styles.clownWrapper}>
+                                                <Image src={"/clown1.svg"} alt="clown" className={styles.hiddenClown} width={80} height={80} />
+                                                <p className={styles.clown}>{index + 1}</p>
+                                            </div>
+                                        </td>
                                         <td>{item.username}</td>
                                         <td className={styles.score}>{item.score}</td>
                                     </tr>

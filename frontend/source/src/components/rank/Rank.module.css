@@ -40,11 +40,12 @@
     letter-spacing: 2px;
 }
 
-.tableBody td {
+.clownRow td {
     padding: 15px 20px;
 }
 
-.tableBody td:nth-child(1) {
+.clownRow td:nth-child(1) {
+    height: auto;
     width: 30%;
     padding: 0px;
 }
@@ -92,4 +93,8 @@
     transform: translate(-50%, -50%);
     padding: 0;
     margin: 0;
+}
+
+.hiddenClown {
+    opacity: 0;
 }

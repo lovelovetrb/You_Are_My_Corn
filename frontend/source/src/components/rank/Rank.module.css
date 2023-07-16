@@ -52,7 +52,7 @@
 }
 
 .score:before {
-    content: "トータルスコア";
+    content: "スコア";
     margin-right: 10px;
 }
 

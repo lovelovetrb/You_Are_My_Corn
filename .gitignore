@@ -3,3 +3,4 @@ backend/app/model_transformers/pytorch_model.bin
 .vscode
 .sh
 .bin
+.DS_Store

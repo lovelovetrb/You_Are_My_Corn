@@ -1,4 +1,5 @@
 import styles from "@/components/rank/Rank.module.css";
+import { category } from "@/lib/num2category";
 import { RankingData } from "@/types/rankingData";
 import { useState } from "react";
 
@@ -8,7 +9,6 @@ type props = {
 
 const Rank = ({ ranking }: props) => {
     const [active, setActive] = useState(0);
-    const category = ["よろこび", "いかり", "かなしみ", "きたい"];
     const showRankingNum = 5;
 
     return (
@@ -30,7 +30,6 @@ const Rank = ({ ranking }: props) => {
             </div>
             <table className={styles.table}>
                 <tbody>
-                    {/* TODO: fetch ranking data */}
                     {ranking
                         .filter((item) => item.category === active)
                         .sort((a, b) => b.score - a.score)

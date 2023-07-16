@@ -54,8 +54,8 @@ export default function Play() {
                 <h2 className={styles.theme}>{genre}</h2>
             </div>
             <div className={styles.boxArea}>
-                <Box heading="ぜったいにつかうワード" words={requiredWord} />
-                <Box heading="きんしワード" words={forbiddenWord} />
+                <Box heading="〇ぜったいにつかうワード" words={requiredWord} />
+                <Box heading="✖きんしワード" words={forbiddenWord} />
             </div>
             <Timer expiryTimestamp={time} onExpireFunc={setIsLimit} />
             <div className={styles.textArea}>

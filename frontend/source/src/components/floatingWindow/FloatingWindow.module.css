@@ -11,7 +11,7 @@
 .flexbox {
     display: flex;
     font-size: 5rem;
-    color: #FF527B;
+    color: #ff527b;
     justify-content: space-between;
     margin-left: 50px;
     margin-right: 50px;
@@ -21,5 +21,26 @@
     font-size: 50px;
     color: rgb(123, 102, 75);
     max-width: 80%;
-    margin: 5% auto 10% auto;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .flexbox {
+        font-size: 50px;
+        margin: 10px;
+    }
+    .howtouse {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+  .flexbox {
+        font-size: 40px;
+        margin: 10px;
+    }
+    .howtouse {
+        font-size: 30px;
+    }
+
 }

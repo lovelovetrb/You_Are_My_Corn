@@ -3,7 +3,7 @@ type _Config = {
 }
 
 const Config: _Config = {
-    apiUrl: process.env.REACT_APP_API_URL || "http://localhost:3000/"
+    apiUrl: process.env.API_ORIGIN || "http://localhost:3000/"
 };
 
 export default Config;

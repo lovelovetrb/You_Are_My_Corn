@@ -20,6 +20,7 @@ export default function Home() {
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         const getRanking = async () => {
+            console.log(Config.apiUrl + "api/ranking");
             const res = await fetch(Config.apiUrl + "api/ranking").then((res) => res.json());
             setRanking(res);
             setIsLoaded(true);

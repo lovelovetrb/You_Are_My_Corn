@@ -17,13 +17,24 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
         "トランペット", "スーパーヒーロー", "ジャングル", "ハンバーガー", "宝箱", "美術館", "トイレ", "サーカス", "ロボット", "サンタクロース", "宝石", "電車",
         "ハリウッド", "シャンパン", "フットボール", "雨", "魚", "カラオケ", "クリスマス", "鏡", "ゴールド", "ドレス", "図書館", "クリスタル", "乗馬",
         "スケートボード", "テレビ", "新聞", "サイクリング", "バルーン", "海", "神社", "プロポーズ", "トロフィー", "パーティー", "彫刻", "お化け屋敷"];
-    const randomInt = Math.floor(Math.random() * 100);
-    const requiredWord = requiredWords[randomInt];
-    const category = Math.floor(Math.random() * 4);
+        const randomInt = Math.floor(Math.random() * 100);
+        const requiredWord = requiredWords[randomInt];
+        const category = Math.floor(Math.random() * 4);
+        var a = forbiddenWordsList[category];
+        var t = [];
+        var r = [];
+        var l = a.length;
+        var n = 5;
+        while (n-- > 0) {
+            var i = Math.random() * l | 0;
+            r[n] = t[i] || a[i];
+            --l;
+            t[i] = t[l] || a[l];
+        }
     const submitData: SubmitData = {
         category,
         requiredWords: [requiredWord],
-        forbiddenWords: forbiddenWordsList[category],
+        forbiddenWords: r,
         startTime: Date.now(),
         verificationHash: "",
     };

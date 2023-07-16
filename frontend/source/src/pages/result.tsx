@@ -86,7 +86,7 @@ const Result = () => {
                         </div>
                         <div className={styles.buttonArea}>
                             <ButtonArea>
-                                <TweetButton text="ツイート" />
+                                <TweetButton text="ツイート" result={result} />
                                 <Link href="/">
                                     <Button text="HOME" />
                                 </Link>

@@ -23,4 +23,6 @@ body::before {
 
 img {
     pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
 }

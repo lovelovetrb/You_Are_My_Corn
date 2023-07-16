@@ -60,14 +60,43 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                             });
                         }
                         var text = req.body.text;
-                        for(var word in submitData.forbiddenWords) {
+                        for(var i in submitData.forbiddenWords) {
+                            var word = submitData.forbiddenWords[i];
                             var result = text.includes(word);
-                            if(result = true){
+                            if(result){
                                 score[submitData.category] = 0;
-                                console.log(submitData.forbiddenWords)
+                                console.log(text);
                                 break;
                             };
                         }
+                        for(var i in submitData.requiredWords) {
+                            var word = submitData.requiredWords[i];
+                            var result = text.includes(word);
+                            if(!result){
+                                score[submitData.category] = 0;
+                                console.log(text);
+                                break;
+                            };
+                        }
+
+                        // score に関するメッセージ
+                        // 100点の場合
+                        // if(score[submitData.category] == 100){
+                        //     textAtom.set("おめでとうございます！あなたは「" + submitData.category + "」のエモちゃれマスターです！");
+                        // }
+                        // // 90点以上の場合
+                        // else if(score[submitData.category] >= 90){
+                        //     textAtom.set("あなたは「" + submitData.category + "」のエモちゃれマスターです！");
+                        // }
+                        // // 20点以下の場合
+                        // else if(score[submitData.category] <= 20){
+                        //     textAtom.set("あなたは「" + submitData.category + "」のエモちゃれ初心者です！");
+                        // }
+                        // // それ以外の場合
+                        // else{
+                        //     textAtom.set("あなたは「" + submitData.category + "」のエモちゃれです！");
+                        // }
+
                         const store = getFirestore();
 
                         const ref = store.collection("scores");

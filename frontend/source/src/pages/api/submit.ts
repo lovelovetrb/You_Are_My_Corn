@@ -7,7 +7,6 @@ import admin from "firebase-admin";
 import { cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import serviceAccount from "../../../firebase-adminsdk.json";
-import { textAtom } from "@/lib/jotai";
 
 interface ExtendNextApiRequest extends NextApiRequest {
     body: {
@@ -34,7 +33,7 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
             res.status(400).end("Time out");
             return;
         }
-       
+
         await fetch("http://backend:5001/calc/", {
             method: "POST",
             headers: {
@@ -59,43 +58,25 @@ export default async function handler(req: ExtendNextApiRequest, res: NextApiRes
                                 credential: cert(serviceAccount as any),
                             });
                         }
-                        var text = req.body.text;
-                        for(var i in submitData.forbiddenWords) {
-                            var word = submitData.forbiddenWords[i];
-                            var result = text.includes(word);
-                            if(result){
+                        const text = req.body.text;
+                        for (const i in submitData.forbiddenWords) {
+                            const word = submitData.forbiddenWords[i];
+                            const result = text.includes(word);
+                            if (result) {
                                 score[submitData.category] = 0;
                                 console.log(text);
                                 break;
-                            };
+                            }
                         }
-                        for(var i in submitData.requiredWords) {
-                            var word = submitData.requiredWords[i];
-                            var result = text.includes(word);
-                            if(!result){
+                        for (const i in submitData.requiredWords) {
+                            const word = submitData.requiredWords[i];
+                            const result = text.includes(word);
+                            if (!result) {
                                 score[submitData.category] = 0;
                                 console.log(text);
                                 break;
-                            };
+                            }
                         }
-
-                        // score に関するメッセージ
-                        // 100点の場合
-                        // if(score[submitData.category] == 100){
-                        //     textAtom.set("おめでとうございます！あなたは「" + submitData.category + "」のエモちゃれマスターです！");
-                        // }
-                        // // 90点以上の場合
-                        // else if(score[submitData.category] >= 90){
-                        //     textAtom.set("あなたは「" + submitData.category + "」のエモちゃれマスターです！");
-                        // }
-                        // // 20点以下の場合
-                        // else if(score[submitData.category] <= 20){
-                        //     textAtom.set("あなたは「" + submitData.category + "」のエモちゃれ初心者です！");
-                        // }
-                        // // それ以外の場合
-                        // else{
-                        //     textAtom.set("あなたは「" + submitData.category + "」のエモちゃれです！");
-                        // }
 
                         const store = getFirestore();
 

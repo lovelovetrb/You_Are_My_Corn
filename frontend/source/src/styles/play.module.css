@@ -34,7 +34,7 @@
 
 @media screen and (max-width:600px) {
     .themeArea {
-        /* margin-left: 0; */
+        flex-direction: column;
 
     }
 

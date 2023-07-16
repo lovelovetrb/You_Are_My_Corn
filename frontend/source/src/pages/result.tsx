@@ -81,6 +81,25 @@ const Result = () => {
                             <h2>Total score</h2>
                             <h2>{result.score}</h2>
                         </div>
+                        <div>
+                            {(() => {
+                            if (data.score == 100) {
+                                return <h2>{`称号: エモちゃれのを極めし者`}</h2>
+                            }
+                            else if(data.score >= 80){
+                                return <h2>{`称号: エモちゃれのマスター!`}</h2>
+                            } 
+                            else if(data.score >= 50){
+                                return <h2>{`称号: エモちゃれのベテラン`}</h2>
+                            } 
+                            else if(data.score >= 20){
+                                return <h2>{`称号: のエモちゃれ駆け出し`}</h2>
+                            } 
+                            else {
+                                return <h2>{`称号: 口下手...`}</h2>
+                            } 
+                            })()}
+                        </div>
                         <div className={styles.inputNameArea}>
                             <h2>あなたはだい{result.rank}いだよ。なまえをかいて、ランクインしよう</h2>
                             <NameForm resultData={result} />

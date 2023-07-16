@@ -3,6 +3,7 @@
     margin: 0 auto;
     color: #7b664b;
     font-family: "Mochiy Pop One", sans-serif;
+    font-size: 20px;
 }
 
 .genreArea {
@@ -12,7 +13,6 @@
 }
 
 .genreButton {
-    font-size: 1.3rem;
     border: 2px solid #7b664b;
     background-color: #ffffff;
     padding: 10px 20px;
@@ -33,7 +33,6 @@
 }
 
 .tableHead th {
-    font-size: 1.3rem;
     padding: 15px 20px;
     border-collapse: collapse;
     border-spacing: 0;
@@ -42,7 +41,6 @@
 }
 
 .tableBody td {
-    font-size: 1.3rem;
     padding: 15px 20px;
 }
 
@@ -52,10 +50,30 @@
 }
 
 .score:before {
-    content: "トータルスコア";
+    content: "スコア";
     margin-right: 10px;
 }
 
 .score:after {
     content: "てん";
+}
+
+@media screen and (max-width: 1200px) {
+    .genreButton {
+        height: 50px;
+    }
+
+.tableBody td {
+    padding:15px 0px;
+  }
+
+    .wrapper {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .wrapper {
+        font-size: 10px;
+    }
 }

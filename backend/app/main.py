@@ -16,7 +16,7 @@ def root():
 
 
 @app.post("/calc/")
-async def calc(item: Item) -> list[int]:
+async def calc(item: Item) -> list[float]:
     score = predict_feel.predict(item.text)
     
     return score

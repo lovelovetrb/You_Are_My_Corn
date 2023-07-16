@@ -85,15 +85,17 @@ const Result = () => {
                         <div>
                             {(() => {
                                 if (result.score == 100) {
-                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれのを極めし者`}</h2>;
+                                    return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれ神`}</h2>;
+                                } else if (result.score >= 99) {
+                                    return <h2 className={styles.award}>{`しょーごー:エモちゃれをきわめしもの (${num2category(result.category)})`}</h2>;
                                 } else if (result.score >= 80) {
-                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれのマスター!`}</h2>;
+                                    return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれのマスター!`}</h2>;
                                 } else if (result.score >= 50) {
-                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれのベテラン`}</h2>;
+                                    return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれベテラン`}</h2>;
                                 } else if (result.score >= 20) {
-                                    return <h2>{`称号: ${num2category(result.category)}のエモちゃれ駆け出し`}</h2>;
+                                    return <h2 className={styles.award}>{`しょーごー: ${num2category(result.category)}のエモちゃれかけだし`}</h2>;
                                 } else {
-                                    return <h2>{"称号: 口下手..."}</h2>;
+                                    return <h2 className={styles.award}>{"しょーごー: くちべた..."}</h2>;
                                 }
                             })()}
                         </div>

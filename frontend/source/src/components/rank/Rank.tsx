@@ -38,7 +38,6 @@ const Rank = ({ ranking }: props) => {
                                 backgroundImage: `url(/clown${index + 1}.svg)`,
                                 backgroundRepeat: "no-repeat",
                                 backgroundSize: "contain",
-                                backgroundPosition: "40px",
                             };
                             if (index < showRankingNum) {
                                 return (

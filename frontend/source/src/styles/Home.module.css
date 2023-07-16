@@ -3,8 +3,8 @@
 }
 
 .container {
-    min-width: 800px;
-    max-width: 800px;
+    max-width: 1000px;
+    min-width: 1000px;
     margin: 50px auto 100px;
 }
 
@@ -14,4 +14,22 @@
     align-items: stretch;
     justify-content: space-around;
     margin-inline: auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .imageArea {
+        display: none;
+    }
+    .container {
+        max-width: 600px;
+        min-width: 600px;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .container {
+        max-width: 300px;
+        min-width: 300px;
+        width: 100%;
+    }
 }

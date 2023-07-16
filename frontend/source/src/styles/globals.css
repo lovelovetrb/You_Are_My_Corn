@@ -1,22 +1,28 @@
 :root {
-  --background: rgb(255, 198, 145)
+    --background: rgb(255, 198, 145);
 }
 
 body {
-  background-color: var(--background);
-  font-family: 'Cherry Bomb One', cursive;
-  /* font-family: 'Kosugi Maru', sans-serif; */
+    background-color: var(--background);
+    font-family: "Cherry Bomb One", cursive;
+    /* font-family: 'Kosugi Maru', sans-serif; */
 }
 
 body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background-color: #FFF48E;
-  transform: skewY(-7deg) translateY(-30%);
-  z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff48e;
+    transform: skewY(-7deg) translateY(-30%);
+    z-index: -1;
+}
+
+img {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
 }

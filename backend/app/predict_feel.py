@@ -45,7 +45,7 @@ class PredictFeel:
         
         for x in array:
             subtract = scores_mlm[0]["all"]
-            if(subtract < -15) : x = x + subtract + 15
+            if(subtract < -10) : x = x + subtract + 10
             # index = np.round(x, 2)
             x = float(x)
             x = round(x, 2)

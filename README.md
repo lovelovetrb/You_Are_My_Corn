@@ -1,5 +1,6 @@
 # エモちゃれ～You Are My Corn!～
 
+<img width="1308" alt="emochare" src="https://github.com/user-attachments/assets/711ee813-04cb-4b9d-902f-517ed05816a1" />
 
 
 ## About
@@ -38,14 +39,13 @@ You Are My Corn!は「好き」を「好き」という言葉を使わずにト�
 
 ## Author
 <strong>Kouhei Arasawa</strong>  
-Github:https://github.com/arara1930   Twitter:  
+Github:https://github.com/arara1930   
 <strong>Kaito Kagaminuma</strong>  
-Github:https://github.com/uma-kagamin  Twitter:   
+Github:https://github.com/uma-kagamin  
 <strong>Mizuki Baba</strong>  
-Github:https://github.com/lovelovetrb  Twitter:   
+Github:https://github.com/lovelovetrb  
 <strong>Yuto Sahashi</strong>  
-Github:https://github.com/xyzyxJP  Twitter:   
+Github:https://github.com/xyzyxJP  
 <strong>Shion Fukuhata</strong>  
-Github:https://github.com/Maxel31 
-Twitter: 
+Github:https://github.com/Maxel31   
 
